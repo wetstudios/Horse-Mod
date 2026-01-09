@@ -1,13 +1,12 @@
-package net.andreasdarsa.horsemod.event;
+package net.wetstudios.horsemod.event;
 
-import net.andreasdarsa.horsemod.HorseMod;
+import net.wetstudios.horsemod.HorseMod;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.Donkey;
 import net.minecraft.world.entity.animal.horse.Horse;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
-import org.checkerframework.checker.units.qual.A;
 
 @EventBusSubscriber(modid = HorseMod.MODID)
 public class MountAttributeHandler {

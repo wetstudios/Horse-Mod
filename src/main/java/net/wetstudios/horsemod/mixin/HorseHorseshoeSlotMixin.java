@@ -1,9 +1,12 @@
-package net.andreasdarsa.horsemod.mixin;
+package net.wetstudios.horsemod.mixin;
 
-import net.andreasdarsa.horsemod.item.ModItems;
+import net.wetstudios.horsemod.HorseMod;
+import net.wetstudios.horsemod.item.ModItems;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.inventory.HorseInventoryMenu;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
@@ -18,6 +21,8 @@ import net.minecraft.world.entity.player.Inventory;
 public class HorseHorseshoeSlotMixin {
 
     @Shadow @Final private AbstractHorse horse;
+
+    private static final ResourceLocation EMPTY_HORSESHOE_SLOT = ResourceLocation.fromNamespaceAndPath(HorseMod.MODID, "item/empty_horseshoe_slot");
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void horsemod$addHorseshoeSlot(int containerId, Inventory playerInventory, Container animalContainer, final AbstractHorse horse, CallbackInfo ci) {
@@ -36,6 +41,6 @@ public class HorseHorseshoeSlotMixin {
             public int getMaxStackSize() {
                 return 1;
             }
-        });
+        }).setBackground(InventoryMenu.BLOCK_ATLAS, EMPTY_HORSESHOE_SLOT);
     }
 }

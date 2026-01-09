@@ -1,6 +1,6 @@
-package net.andreasdarsa.horsemod.event;
+package net.wetstudios.horsemod.event;
 
-import net.andreasdarsa.horsemod.HorseMod;
+import net.wetstudios.horsemod.HorseMod;
 import net.minecraft.client.gui.screens.inventory.HorseInventoryScreen;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;

@@ -1,6 +1,6 @@
-package net.andreasdarsa.horsemod.item;
+package net.wetstudios.horsemod.item;
 
-import net.andreasdarsa.horsemod.HorseMod;
+import net.wetstudios.horsemod.HorseMod;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;

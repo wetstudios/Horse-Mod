@@ -1,7 +1,7 @@
-package net.andreasdarsa.horsemod.event;
+package net.wetstudios.horsemod.event;
 
-import net.andreasdarsa.horsemod.HorseMod;
-import net.andreasdarsa.horsemod.item.ModItems;
+import net.wetstudios.horsemod.HorseMod;
+import net.wetstudios.horsemod.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;

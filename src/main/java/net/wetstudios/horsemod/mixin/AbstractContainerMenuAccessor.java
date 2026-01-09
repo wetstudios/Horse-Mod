@@ -1,4 +1,4 @@
-package net.andreasdarsa.horsemod.mixin;
+package net.wetstudios.horsemod.mixin;
 
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;

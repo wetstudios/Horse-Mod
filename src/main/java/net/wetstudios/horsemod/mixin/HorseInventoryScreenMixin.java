@@ -1,6 +1,6 @@
-package net.andreasdarsa.horsemod.mixin;
+package net.wetstudios.horsemod.mixin;
 
-import net.andreasdarsa.horsemod.HorseMod;
+import net.wetstudios.horsemod.HorseMod;
 import net.minecraft.client.gui.screens.inventory.HorseInventoryScreen;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;

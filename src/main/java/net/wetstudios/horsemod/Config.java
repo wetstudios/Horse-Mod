@@ -1,4 +1,4 @@
-package net.andreasdarsa.horsemod;
+package net.wetstudios.horsemod;
 
 import java.util.List;
 
