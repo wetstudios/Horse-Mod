@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.wetstudios.horsemod.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AbstractHorseAccessor",
+    "HorseDataSaverMixin",
+    "HorseInventorySizeMixin"
+  ],
+  "client": [
+    "HorseInventoryScreenMixin"
+  ]
+}
