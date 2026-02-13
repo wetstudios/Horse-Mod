@@ -22,10 +22,6 @@ public class HorseInventoryScreenMixin extends AbstractContainerScreen<HorseInve
     @Shadow
     @Final
     private AbstractHorse horse;
-    @Shadow protected int leftPos;
-    @Shadow protected int topPos;
-    @Shadow protected int imageWidth;
-    @Shadow protected int imageHeight;
     private static final ResourceLocation WIDER_GUI = ResourceLocation.fromNamespaceAndPath(HorseMod.MODID, "textures/gui/container/expanded_donkey.png");
 
     public HorseInventoryScreenMixin(HorseInventoryMenu menu, Inventory playerInventory, Component title) {
@@ -57,8 +53,8 @@ public class HorseInventoryScreenMixin extends AbstractContainerScreen<HorseInve
             // Safe cast logic
             if (this.horse instanceof AbstractHorseAccessor accessor){
                 SimpleContainer inventory = accessor.getInventory();
-                int x = (this.width - 176)/2;
-                int y = (this.height - 166)/2;
+                int x = this.leftPos;
+                int y = this.topPos;
                 graphics.blit(WIDER_GUI, x + 79, y + 17, 0, 0, 108, 54, 108, 54);
             }
             else{
