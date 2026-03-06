@@ -25,27 +25,33 @@ public class HorseTrimLayer extends RenderLayer<Horse, HorseModel<Horse>> {
     }
 
     @Override
-    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Horse horse, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-        ItemStack armorStack = horse.getArmorSlots().iterator().next(); // Get horse armor
+    public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Horse horse,
+                       float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+
+        // Get the horse armor item stack
+        ItemStack armorStack = horse.getArmorSlots().iterator().next();
 
         if (!armorStack.isEmpty()) {
             // Check for the Trim Data Component (1.21 style)
             ArmorTrim trim = armorStack.get(DataComponents.TRIM);
+
             if (trim != null) {
-                // 1. Get the Pattern's asset ID (e.g., "minecraft:sentry")
+                // 1. Get the Pattern's asset ID (e.g., "minecraft:sentry" or "horsemod:bolt")
                 ResourceLocation patternId = trim.pattern().value().assetId();
 
-                // 2. Construct the path manually to our custom horse_armor folder
-                // This will point to: assets/[namespace]/textures/trims/models/horse_armor/[pattern_name].png
+                // 2. Construct the path to your CUSTOM horse-mapped 64x64 textures
+                // This will point to: assets/horsemod/textures/trims/models/horse_armor/[pattern_name].png
                 ResourceLocation horseTrimRes = ResourceLocation.fromNamespaceAndPath(
-                        patternId.getNamespace(),
+                        "horsemod",
                         "textures/trims/models/horse_armor/" + patternId.getPath() + ".png"
                 );
 
+                // 3. Model setup and rendering
                 this.getParentModel().copyPropertiesTo(this.model);
                 this.model.prepareMobModel(horse, limbSwing, limbSwingAmount, partialTick);
                 this.model.setupAnim(horse, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 
+                // Use armorCutoutNoCull for transparent trim layers
                 VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.armorCutoutNoCull(horseTrimRes));
                 this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY);
             }

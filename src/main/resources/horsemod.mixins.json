@@ -8,7 +8,8 @@
     "AbstractHorseAccessor",
     "HorseDataSaverMixin",
     "HorseInventorySizeMixin",
-    "DonkeyInventoryMixin"
+    "DonkeyInventoryMixin",
+    "HorseHorseshoeSlotMixin"
   ],
   "client": [
     "HorseInventoryScreenMixin"

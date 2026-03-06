@@ -1,0 +1,10 @@
+{
+  "layers": {
+    "humanoid": [],
+    "animal": [{
+      "texture": "horsemod:trims/models/armor/dune",
+      "dyeable": true,
+      "use_player_texture": false
+    }]
+  }
+}

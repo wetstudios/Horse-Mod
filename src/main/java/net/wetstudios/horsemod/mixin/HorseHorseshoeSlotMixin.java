@@ -1,5 +1,6 @@
 package net.wetstudios.horsemod.mixin;
 
+import net.minecraft.world.SimpleContainer;
 import net.wetstudios.horsemod.HorseMod;
 import net.wetstudios.horsemod.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
@@ -16,6 +17,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import net.minecraft.world.entity.player.Inventory;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HorseInventoryMenu.class)
 public class HorseHorseshoeSlotMixin {
@@ -42,5 +44,24 @@ public class HorseHorseshoeSlotMixin {
                 return 1;
             }
         }).setBackground(InventoryMenu.BLOCK_ATLAS, EMPTY_HORSESHOE_SLOT);
+    }
+
+    @Inject(method = "createInventory", at = @At("RETURN"), cancellable = true)
+    private void horsemod$expandInventoryForShoes(CallbackInfoReturnable<SimpleContainer> cir) {
+        SimpleContainer originalInv = cir.getReturnValue();
+        int currentSize = originalInv.getContainerSize();
+
+        // We add 1 for the Horseshoe slot
+        // If the horse is a Donkey/Mule with chests, the size will already be larger
+        int newSize = currentSize + 1;
+
+        // Create the expanded container and copy the old items over
+        SimpleContainer expandedInv = new SimpleContainer(newSize);
+        for (int i = 0; i < currentSize; i++) {
+            expandedInv.setItem(i, originalInv.getItem(i));
+        }
+
+        // Send the larger inventory back to the horse
+        cir.setReturnValue(expandedInv);
     }
 }

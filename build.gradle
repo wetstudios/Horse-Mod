@@ -95,7 +95,7 @@ neoForge {
         // define mod <-> source bindings
         // these are used to tell the game which sources are for which mod
         // multi mod projects should define one per mod
-        create(project.mod_id) {
+        horsemod {
             sourceSet(sourceSets.main)
         }
     }
